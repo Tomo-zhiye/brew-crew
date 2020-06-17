@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 class Register extends StatelessWidget {
   final Function toggleView;
   Register({this.toggleView});
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<RegisterModel>(
@@ -28,15 +29,22 @@ class Register extends StatelessWidget {
           return Container(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
             child: Form(
+              key: _formKey,
               child: Column(
                 children: <Widget>[
                   SizedBox(height: 20.0),
-                  TextFormField(onChanged: (val) {
-                    model.email = val;
-                  }),
+                  TextFormField(
+                      validator: (val) =>
+                          val.trim().isEmpty ? 'Must not be empty' : null,
+                      onChanged: (val) {
+                        model.email = val;
+                      }),
                   SizedBox(height: 20.0),
                   TextFormField(
                     obscureText: true,
+                    validator: (val) => val.length < 6
+                        ? 'Enter a password 6+ chars long'
+                        : null,
                     onChanged: (val) {
                       model.password = val;
                     },
@@ -49,10 +57,16 @@ class Register extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () async {
-                      print(model.email);
-                      print(model.password);
+                      if (_formKey.currentState.validate()) {
+                        model.registerWithEmailAndPassWord();
+                      }
                     },
-                  )
+                  ),
+                  SizedBox(height: 12),
+                  Text(
+                    model.error,
+                    style: TextStyle(color: Colors.red, fontSize: 14.0),
+                  ),
                 ],
               ),
             ),
