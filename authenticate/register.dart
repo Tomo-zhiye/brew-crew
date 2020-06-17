@@ -1,31 +1,30 @@
-import 'package:brew_crew/screens/authenticate/register.dart';
-import 'package:brew_crew/screens/authenticate/sign_in_model.dart';
-import 'package:provider/provider.dart';
+import 'package:brew_crew/screens/authenticate/register_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class SignIn extends StatelessWidget {
+class Register extends StatelessWidget {
   final Function toggleView;
-  SignIn({this.toggleView});
+  Register({this.toggleView});
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<SignInModel>(
-      create: (_) => SignInModel(),
+    return ChangeNotifierProvider<RegisterModel>(
+      create: (_) => RegisterModel(),
       child: Scaffold(
         backgroundColor: Colors.brown[100],
         appBar: AppBar(
           backgroundColor: Colors.brown[400],
           elevation: 0.0,
-          title: Text('Sing in to Brew Crew'),
+          title: Text('Sign up to Brew Crew'),
           actions: <Widget>[
             FlatButton.icon(
                 onPressed: () {
                   this.toggleView();
                 },
                 icon: Icon(Icons.person),
-                label: Text('Register'))
+                label: Text('Sign in'))
           ],
         ),
-        body: Consumer<SignInModel>(builder: (context, model, child) {
+        body: Consumer<RegisterModel>(builder: (context, model, child) {
           return Container(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
             child: Form(
@@ -46,7 +45,7 @@ class SignIn extends StatelessWidget {
                   RaisedButton(
                     color: Colors.pink[400],
                     child: Text(
-                      'Sign in',
+                      'Register',
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () async {
