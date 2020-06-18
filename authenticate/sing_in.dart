@@ -49,10 +49,7 @@ class SignIn extends StatelessWidget {
                       'Sign in',
                       style: TextStyle(color: Colors.white),
                     ),
-                    onPressed: () async {
-                      print(model.email);
-                      print(model.password);
-                    },
+                    onPressed: () async {},
                   )
                 ],
               ),

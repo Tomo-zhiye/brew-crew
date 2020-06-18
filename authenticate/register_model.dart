@@ -10,7 +10,7 @@ class RegisterModel extends ChangeNotifier {
   String email = '';
   String password = '';
   String error = '';
-  RegisterModel({this.email, this.password, this.error});
+  RegisterModel({this.email, this.password});
 
   Future singInAnon() async {
     dynamic result = await _auth.singInAnon();
@@ -21,8 +21,7 @@ class RegisterModel extends ChangeNotifier {
 
   Future registerWithEmailAndPassWord() async {
     dynamic result = await _auth.registerWithEmailAndPassword(email, password);
-    (result == null)
-        ? error = 'Please supply a valid email'
-        : notifyListeners();
+    (result == null) ? error = 'Please supply a valid email' : error = '';
+    notifyListeners();
   }
 }

@@ -26,6 +26,7 @@ class Register extends StatelessWidget {
           ],
         ),
         body: Consumer<RegisterModel>(builder: (context, model, child) {
+          final error = model.error;
           return Container(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
             child: Form(
@@ -64,7 +65,8 @@ class Register extends StatelessWidget {
                   ),
                   SizedBox(height: 12),
                   Text(
-                    model.error,
+//                    問題の箇所,
+                    error,
                     style: TextStyle(color: Colors.red, fontSize: 14.0),
                   ),
                 ],
