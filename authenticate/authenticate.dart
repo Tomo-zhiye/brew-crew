@@ -1,8 +1,9 @@
-import 'package:brew_crew/screens/authenticate/authenticate_model.dart';
 import 'package:brew_crew/screens/authenticate/register.dart';
-import 'package:brew_crew/screens/authenticate/sing_in.dart';
+import 'package:brew_crew/screens/authenticate/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'authenticate_model.dart';
 
 class Authenticate extends StatelessWidget {
   @override

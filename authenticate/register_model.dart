@@ -1,27 +1,14 @@
-import 'package:brew_crew/services/auth.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class RegisterModel extends ChangeNotifier {
-//  Authorization
-  final AuthService _auth = AuthService();
-//  Form
-//  final _formKey = GlobalKey<FormState>();
-//  Confidentials
   String email = '';
   String password = '';
   String error = '';
-  RegisterModel({this.email, this.password});
 
-  Future singInAnon() async {
-    dynamic result = await _auth.singInAnon();
-    var condition = (result == null);
-    return condition ? print('Something went wrong') : result;
-    notifyListeners();
-  }
+//  SignInModel({this.email, this.password});
 
-  Future registerWithEmailAndPassWord() async {
-    dynamic result = await _auth.registerWithEmailAndPassword(email, password);
-    (result == null) ? error = 'Please supply a valid email' : error = '';
+  void showError() {
+    error = 'please supply a valid email';
     notifyListeners();
   }
 }
